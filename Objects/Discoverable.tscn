@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://n7yvd72u4w0i"]
+
+[ext_resource type="Script" path="res://Scripts/Discoverable.gd" id="1_b33x5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lfvcg"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Discoverable" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_b33x5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lfvcg")

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cqv2wo4avmytt"]
+
+[ext_resource type="FontFile" uid="uid://civwjbk2ivmio" path="res://ffviiifont.fnt" id="1_1s5ep"]
+
+[resource]
+default_font = ExtResource("1_1s5ep")
+default_font_size = 24

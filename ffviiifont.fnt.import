@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://civwjbk2ivmio"
+path="res://.godot/imported/ffviiifont.fnt-93fd58d94f8d0cad1619001f788a5446.fontdata"
+
+[deps]
+
+source_file="res://ffviiifont.fnt"
+dest_files=["res://.godot/imported/ffviiifont.fnt-93fd58d94f8d0cad1619001f788a5446.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

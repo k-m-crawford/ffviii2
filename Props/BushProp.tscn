@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn66v5qa3ovtg"]
+
+[ext_resource type="Texture2D" uid="uid://ceh6fqnrfexut" path="res://Sprites/Bush.png" id="1_d5tjs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5j7r7"]
+radius = 0.0905296
+height = 0.190466
+
+[node name="TreeProp" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140233, 0)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("1_d5tjs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("CapsuleShape3D_5j7r7")

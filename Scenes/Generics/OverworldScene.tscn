@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://pdkbrohchitf"]
+
+[ext_resource type="Script" path="res://Scripts/OverworldScene.gd" id="1_8nnkh"]
+[ext_resource type="PackedScene" uid="uid://c1b11pamcb07i" path="res://Environments/BlueSky.tscn" id="3_6v84c"]
+[ext_resource type="Environment" uid="uid://cjadsn7kbeenm" path="res://Environments/BlueSky.tres" id="4_bcpcj"]
+[ext_resource type="PackedScene" uid="uid://etaroqmiouls" path="res://Misc/CameraRig.tscn" id="5_55s0a"]
+[ext_resource type="PackedScene" uid="uid://bjou746l1ums2" path="res://Environments/Water.tscn" id="5_orjws"]
+
+[node name="OverworldScene" type="Node3D"]
+process_mode = 1
+script = ExtResource("1_8nnkh")
+spawn_points = {
+"main": NodePath("SpawnPoint")
+}
+
+[node name="GridMap" type="GridMap" parent="."]
+cell_size = Vector3(0.5, 0.5, 0.5)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("3_6v84c")]
+environment = ExtResource("4_bcpcj")
+
+[node name="Water" parent="." instance=ExtResource("5_orjws")]
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+
+[node name="CameraRig" parent="." instance=ExtResource("5_55s0a")]
+unique_name_in_owner = true

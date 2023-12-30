@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://dgvxu54th4sst"
+path="res://.godot/imported/DrawPoint.dialogue-432d4b3c36030852e5264aaf113d065f.tres"
+
+[deps]
+
+source_file="res://Dialogues/DrawPoint.dialogue"
+dest_files=["res://.godot/imported/DrawPoint.dialogue-432d4b3c36030852e5264aaf113d065f.tres"]
+
+[params]
+
+defaults=true

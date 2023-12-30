@@ -1,0 +1,174 @@
+[gd_scene load_steps=13 format=3 uid="uid://kubm2c2bvxnh"]
+
+[ext_resource type="Shader" path="res://addons/trail_shader/GPUTrail-main/shaders/trail.gdshader" id="1_nv6al"]
+[ext_resource type="Script" path="res://DrawPointAnim.gd" id="1_wxd1n"]
+[ext_resource type="Shader" path="res://addons/trail_shader/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="2_ses62"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://addons/trail_shader/GPUTrail-main/defaults/texture.tres" id="3_4j1k2"]
+[ext_resource type="Texture2D" uid="uid://ct31fhxvcragr" path="res://addons/trail_shader/GPUTrail-main/defaults/curve.tres" id="4_wegyc"]
+[ext_resource type="Script" path="res://addons/trail_shader/GPUTrail-main/GPUTrail3D.gd" id="5_j8ge2"]
+
+[sub_resource type="Curve3D" id="Curve3D_uvb7s"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.168036, 0.0956834, 0.0135564, 0, 0, 0, 0, 0, 0, 0.185655, 0.266449, -0.00417185, 0, 0, 0, 0, 0, 0, 0.154299, 0.442423, 0.00358576, 0, 0, 0, 0, 0, 0, 0.0126038, 0.578956, -0.00991535, 0, 0, 0, 0, 0, 0, -0.120567, 0.652787, -0.016967),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m77xn"]
+shader = ExtResource("1_nv6al")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xepcv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_ses62")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 44
+shader_parameter/tex = ExtResource("3_4j1k2")
+shader_parameter/color_ramp = ExtResource("3_4j1k2")
+shader_parameter/curve = ExtResource("4_wegyc")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qe16d"]
+material = SubResource("ShaderMaterial_xepcv")
+
+[sub_resource type="Animation" id="Animation_kicxv"]
+resource_name = "Stocked"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 6.4, 8.7, 9.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUTrail3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8, 8.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e2wd5"]
+_data = {
+"Stocked": SubResource("Animation_kicxv")
+}
+
+[node name="DrawPoint" type="Node3D"]
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(0.0853822, 0, -0.996348, 0, 1, 0, 0.996348, 0, 0.0853822, 0, 0, 0)
+curve = SubResource("Curve3D_uvb7s")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.0804058, -0.491971, 0.866764, 0, 0.869607, 0.493555, -0.996655, -0.0396901, 0.0699267, 0, 0, 0)
+use_model_front = true
+loop = false
+script = ExtResource("1_wxd1n")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(-0.894427, 1.49012e-08, -0.447214, 0.298143, 0.745356, -0.596285, 0.333333, -0.666667, -0.666667, 0, 0, 0)
+amount = 132
+lifetime = 132.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_m77xn")
+draw_pass_1 = SubResource("QuadMesh_qe16d")
+script = ExtResource("5_j8ge2")
+length = 132
+color_ramp = ExtResource("3_4j1k2")
+curve = ExtResource("4_wegyc")
+billboard = true
+_defaults_have_been_set = true
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(-0.999455, 0, -0.0330155, 0, 1, 0, 0.0330155, 0, -0.999455, 0, 0, 0)
+curve = SubResource("Curve3D_uvb7s")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
+transform = Transform3D(0.0804058, -0.491971, 0.866764, 0, 0.869607, 0.493555, -0.996655, -0.0396901, 0.0699267, 0, 0, 0)
+use_model_front = true
+loop = false
+script = ExtResource("1_wxd1n")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="Path3D2/PathFollow3D"]
+transform = Transform3D(-0.894427, 1.49012e-08, -0.447214, 0.298143, 0.745356, -0.596285, 0.333333, -0.666667, -0.666667, 0, 0, 0)
+amount = 132
+lifetime = 132.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_m77xn")
+draw_pass_1 = SubResource("QuadMesh_qe16d")
+script = ExtResource("5_j8ge2")
+length = 132
+color_ramp = ExtResource("3_4j1k2")
+curve = ExtResource("4_wegyc")
+billboard = true
+_defaults_have_been_set = true
+
+[node name="Path3D3" type="Path3D" parent="."]
+transform = Transform3D(0.436252, 0, -0.899824, 0, 1, 0, 0.899824, 0, 0.436252, 0, 0, 0)
+curve = SubResource("Curve3D_uvb7s")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D3"]
+transform = Transform3D(0.0804058, -0.491971, 0.866764, 0, 0.869607, 0.493555, -0.996655, -0.0396901, 0.0699267, 0, 0, 0)
+use_model_front = true
+loop = false
+script = ExtResource("1_wxd1n")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="Path3D3/PathFollow3D"]
+transform = Transform3D(-0.894427, 1.49012e-08, -0.447214, 0.298143, 0.745356, -0.596285, 0.333333, -0.666667, -0.666667, 0, 0, 0)
+amount = 132
+lifetime = 132.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_m77xn")
+draw_pass_1 = SubResource("QuadMesh_qe16d")
+script = ExtResource("5_j8ge2")
+length = 132
+color_ramp = ExtResource("3_4j1k2")
+curve = ExtResource("4_wegyc")
+billboard = true
+_defaults_have_been_set = true
+
+[node name="Path3D4" type="Path3D" parent="."]
+transform = Transform3D(-0.823988, 0, 0.566608, 0, 1, 0, -0.566608, 0, -0.823988, 0, 0, 0)
+curve = SubResource("Curve3D_uvb7s")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D4"]
+transform = Transform3D(0.0804058, -0.491971, 0.866764, 0, 0.869607, 0.493554, -0.996655, -0.0396901, 0.0699267, 0, 0, 0)
+use_model_front = true
+loop = false
+script = ExtResource("1_wxd1n")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="Path3D4/PathFollow3D"]
+transform = Transform3D(-0.894427, 1.49012e-08, -0.447214, 0.298143, 0.745356, -0.596285, 0.333333, -0.666667, -0.666667, 0, 0, 0)
+amount = 100
+lifetime = 100.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_m77xn")
+draw_pass_1 = SubResource("QuadMesh_qe16d")
+script = ExtResource("5_j8ge2")
+color_ramp = ExtResource("3_4j1k2")
+curve = ExtResource("4_wegyc")
+billboard = true
+_defaults_have_been_set = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Path3D/PathFollow3D")
+libraries = {
+"": SubResource("AnimationLibrary_e2wd5")
+}
+autoplay = "Stocked"
+speed_scale = 2.0

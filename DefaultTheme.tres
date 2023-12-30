@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cqv2wo4avmytt"]
+
+[ext_resource type="FontFile" uid="uid://civwjbk2ivmio" path="res://ffviiifont.fnt" id="1_x4ur8"]
+
+[resource]
+default_font = ExtResource("1_x4ur8")
+default_font_size = 24
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/fonts/font = ExtResource("1_x4ur8")

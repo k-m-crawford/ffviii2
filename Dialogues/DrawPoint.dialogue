@@ -1,0 +1,9 @@
+~ draw_point_found
+
+Found a draw point! {{DialogueVariables.magic_to_draw}} found.
+Who will draw?
+- Squall
+- Selphie
+- Rinoa
+
+=> END

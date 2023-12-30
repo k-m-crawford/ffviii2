@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://cet4mgxepx4eq"]
+
+[ext_resource type="PackedScene" uid="uid://dfcmobclqtebw" path="res://Tiles/CliffBaseTile.tscn" id="1_2yl7d"]
+[ext_resource type="PackedScene" uid="uid://c5hhuvs3wtxaw" path="res://Tiles/CliffFaceTile.tscn" id="2_248u3"]
+[ext_resource type="PackedScene" uid="uid://wruniwk4k08x" path="res://Tiles/GrassCliffTile.tscn" id="3_nrnu5"]
+[ext_resource type="PackedScene" uid="uid://dfwx8x4ibp33q" path="res://Tiles/CliffStairTile.tscn" id="4_7qjdp"]
+
+[node name="MeshMap" type="Node3D"]
+
+[node name="cuboid" parent="." instance=ExtResource("1_2yl7d")]
+
+[node name="cuboid2" parent="." instance=ExtResource("2_248u3")]
+
+[node name="cuboid3" parent="." instance=ExtResource("3_nrnu5")]
+
+[node name="cuboid4" parent="." instance=ExtResource("4_7qjdp")]

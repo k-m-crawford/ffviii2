@@ -1,0 +1,32 @@
+[gd_resource type="Environment" load_steps=6 format=3 uid="uid://cjadsn7kbeenm"]
+
+[ext_resource type="Shader" path="res://Shaders/SkyShader.gdshader" id="1_mkap6"]
+[ext_resource type="Texture2D" uid="uid://deqtt3botc2jc" path="res://Shaders/2.png" id="2_l5tje"]
+[ext_resource type="Texture2D" uid="uid://bpxyd8a433qne" path="res://Shaders/4.png" id="3_b27gn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jluuy"]
+shader = ExtResource("1_mkap6")
+shader_parameter/skyColor = Color(0.580392, 0.811765, 1, 1)
+shader_parameter/horizonColor = Color(0.176471, 0.192157, 0.615686, 1)
+shader_parameter/tex1_y_offset = 0.0
+shader_parameter/tex2_y_offset = 0.4
+shader_parameter/tex1_time_offset = 200.0
+shader_parameter/tex2_time_offset = 100.0
+shader_parameter/skyTexture = ExtResource("2_l5tje")
+shader_parameter/skyTexture2 = ExtResource("3_b27gn")
+
+[sub_resource type="Sky" id="Sky_ffyix"]
+sky_material = SubResource("ShaderMaterial_jluuy")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_ffyix")
+ambient_light_color = Color(0.0196078, 0.270588, 0.427451, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.5
+tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_bloom = 0.04

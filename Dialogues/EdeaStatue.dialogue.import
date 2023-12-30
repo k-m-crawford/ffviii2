@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://518kgjuup0ch"
+path="res://.godot/imported/EdeaStatue.dialogue-b8be4021cb7549a5d36c2874ec923a67.tres"
+
+[deps]
+
+source_file="res://Dialogues/EdeaStatue.dialogue"
+dest_files=["res://.godot/imported/EdeaStatue.dialogue-b8be4021cb7549a5d36c2874ec923a67.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,62 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://x4wand06q6wh"
+path="res://.godot/imported/EdeasOrphanageExterior.glb-00daa658989a8fcf1d8ac5066791c334.scn"
+
+[deps]
+
+source_file="res://Models/EdeasOrphanageExterior.glb"
+dest_files=["res://.godot/imported/EdeasOrphanageExterior.glb-00daa658989a8fcf1d8ac5066791c334.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"nodes": {
+"PATH:Node/buildingdoor/cuboid2": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Node/platform_stairs/cylinder": {
+"generate/physics": true
+},
+"PATH:Node/platform_stairs/cylinder2": {
+"generate/physics": true
+},
+"PATH:Node/platform_stairs/platform": {
+"generate/physics": true
+},
+"PATH:Node/platform_stairs/stairs": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/rooftop/cuboid": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Node/rooftop/pyramid": {
+"generate/physics": true,
+"physics/shape_type": 1
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

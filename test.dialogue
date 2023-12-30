@@ -1,0 +1,9 @@
+~ this_is_a_node_title
+
+Zell: "So, Caraway and Cid ..."
+Squall: "Want us to come equipped. I know."
+Zell: "I brought some GFs. With you and Rinoa out at the orphanage and all I know you guys haven't been using magic ... you know about all the GF research at Garden?"
+
+Zell: "Need a run down on how GFs work now? Or have you been keeping up?"
+- Yes => this_is_a_node_title
+- No => END

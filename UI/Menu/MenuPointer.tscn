@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://71fc6df20643"]
+
+[ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="1_k7avi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17wte"]
+atlas = ExtResource("1_k7avi")
+region = Rect2(366, 1, 24, 15)
+
+[node name="Pointer" type="TextureRect"]
+visible = false
+top_level = true
+offset_left = -31.0
+offset_top = -47.0
+offset_right = 17.0
+offset_bottom = -17.0
+texture = SubResource("AtlasTexture_17wte")

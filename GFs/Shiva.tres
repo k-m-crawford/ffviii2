@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GF" load_steps=2 format=3 uid="uid://cpekv3vxup8cy"]
+
+[ext_resource type="Script" path="res://GFStruct.gd" id="1_0j7hh"]
+
+[resource]
+script = ExtResource("1_0j7hh")
+name = "Shiva"
+junctioned = true

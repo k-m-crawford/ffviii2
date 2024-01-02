@@ -1,0 +1,168 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4vrnffinnqoa"]
+
+[ext_resource type="PackedScene" uid="uid://dirc82dij61c3" path="res://UI/Menu/MenuBase.tscn" id="1_ofhoc"]
+[ext_resource type="Texture2D" uid="uid://dm2glf1awue65" path="res://addons/dialogue_manager/default_balloon/menu_border.png" id="2_wktoq"]
+[ext_resource type="Gradient" path="res://addons/dialogue_manager/default_balloon/box_gradients.tres" id="3_vb0lc"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="4_fm8cd"]
+[ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="5_dvqci"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x0pss"]
+gradient = ExtResource("3_vb0lc")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deghv"]
+atlas = ExtResource("5_dvqci")
+region = Rect2(277, 9, 32, 6)
+
+[node name="FieldMenuPartyStatus" instance=ExtResource("1_ofhoc")]
+anchor_bottom = 0.231
+offset_bottom = 0.311996
+grow_horizontal = 1
+grow_vertical = 1
+selection_position_override = [[NodePath("PartyStatus/NinePatchRect/Name"), NodePath("PartyStatus/NinePatchRect2/Name"), NodePath("PartyStatus/NinePatchRect3/Name"), null], null]
+right_boundary = 2
+in_focus = true
+
+[node name="NinePatchRect" parent="." index="0"]
+visible = false
+texture = null
+
+[node name="Background" parent="NinePatchRect" index="0"]
+visible = false
+texture = null
+
+[node name="PartyStatus" type="Control" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PartyStatus" index="0"]
+z_as_relative = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.333
+offset_bottom = 0.0499992
+grow_horizontal = 2
+texture = ExtResource("2_wktoq")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Background" type="TextureRect" parent="PartyStatus/NinePatchRect" index="0"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_x0pss")
+
+[node name="Name" type="Label" parent="PartyStatus/NinePatchRect" index="1"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 193.0
+offset_bottom = 40.0
+theme = ExtResource("4_fm8cd")
+text = "Squall"
+
+[node name="Header" type="TextureRect" parent="PartyStatus/NinePatchRect" index="2"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 6.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_deghv")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="PartyStatus" index="1"]
+z_as_relative = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.333
+anchor_right = 1.0
+anchor_bottom = 0.667
+offset_top = 0.0499992
+offset_bottom = -0.0500107
+texture = ExtResource("2_wktoq")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Background" type="TextureRect" parent="PartyStatus/NinePatchRect2" index="0"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_x0pss")
+
+[node name="Name" type="Label" parent="PartyStatus/NinePatchRect2" index="1"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 193.0
+offset_bottom = 40.0
+theme = ExtResource("4_fm8cd")
+text = "Squall"
+
+[node name="Header" type="TextureRect" parent="PartyStatus/NinePatchRect2" index="2"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 6.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_deghv")
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="PartyStatus" index="2"]
+z_as_relative = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.667
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.0500107
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wktoq")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Background" type="TextureRect" parent="PartyStatus/NinePatchRect3" index="0"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_x0pss")
+
+[node name="Name" type="Label" parent="PartyStatus/NinePatchRect3" index="1"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 193.0
+offset_bottom = 40.0
+theme = ExtResource("4_fm8cd")
+text = "Squall"
+
+[node name="Header" type="TextureRect" parent="PartyStatus/NinePatchRect3" index="2"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 6.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_deghv")

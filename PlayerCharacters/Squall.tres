@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=6 format=3 uid="uid://bq21s7qphsxh4"]
+
+[ext_resource type="Script" path="res://PlayerCharacter.gd" id="1_6p37d"]
+[ext_resource type="Resource" uid="uid://cpekv3vxup8cy" path="res://GFs/Shiva.tres" id="1_r2jmy"]
+[ext_resource type="Texture2D" uid="uid://c1p5bnvx5r526" path="res://UI/Menu/portraits_high_res.png" id="1_u5y5n"]
+[ext_resource type="Resource" uid="uid://dbfxiv8vw4hg3" path="res://GFs/Quetzacotl.tres" id="2_65fep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3daqp"]
+atlas = ExtResource("1_u5y5n")
+region = Rect2(0, 0, 64, 96)
+
+[resource]
+script = ExtResource("1_6p37d")
+name = "Squall"
+portrait = SubResource("AtlasTexture_3daqp")
+max_hp = 232
+hp = 232
+stn = 1
+vit = 1
+mag = 1
+spr = 1
+spd = 1
+eva = 1
+hit = 1
+luck = 1
+junctioned_gfs = Array[Resource]([ExtResource("1_r2jmy"), ExtResource("2_65fep")])
+max_gfs = 4

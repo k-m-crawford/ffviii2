@@ -1,0 +1,261 @@
+[gd_scene load_steps=15 format=3 uid="uid://5bb80xyjslk8"]
+
+[ext_resource type="PackedScene" uid="uid://0kpo0iiiu2kv" path="res://UI/Menu/MenuContextBase.tscn" id="1_4a77d"]
+[ext_resource type="PackedScene" uid="uid://dc15mp4npehms" path="res://UI/Menu/JunctionMenuSubSelect.tscn" id="1_icjoc"]
+[ext_resource type="PackedScene" uid="uid://bl7wekt7hvubl" path="res://UI/Menu/HelpBar.tscn" id="2_weol3"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="4_0eid6"]
+[ext_resource type="PackedScene" uid="uid://dskebg2dhp5dn" path="res://UI/Menu/VitalStatsCard.tscn" id="4_86j0v"]
+[ext_resource type="Script" path="res://UI/Menu/VitalStatsCard.gd" id="5_beprm"]
+[ext_resource type="Script" path="res://UI/Menu/MenuBase.gd" id="6_ll2wd"]
+[ext_resource type="Texture2D" uid="uid://dm2glf1awue65" path="res://addons/dialogue_manager/default_balloon/menu_border.png" id="7_fbe4j"]
+[ext_resource type="Gradient" path="res://addons/dialogue_manager/default_balloon/box_gradients.tres" id="8_udjvx"]
+[ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="9_1qjif"]
+[ext_resource type="PackedScene" uid="uid://bytrroudi5133" path="res://UI/Menu/GFJunctionMenu.tscn" id="10_s5vjp"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wpw8w"]
+gradient = ExtResource("8_udjvx")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oda3"]
+atlas = ExtResource("9_1qjif")
+region = Rect2(277, 9, 32, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo037"]
+atlas = ExtResource("9_1qjif")
+region = Rect2(366, 1, 24, 15)
+
+[node name="JunctionMenuContext" instance=ExtResource("1_4a77d")]
+custom_minimum_size = Vector2(587, 0)
+size_flags_horizontal = 4
+default_focus = NodePath("HBoxContainer/JunctionBarMargin/JunctionSubSelect")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." index="1"]
+layout_mode = 1
+offset_right = 810.0
+offset_bottom = 438.0
+alignment = 2
+
+[node name="JunctionBarMargin" type="MarginContainer" parent="HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_top = 16
+
+[node name="JunctionSubSelect" parent="HBoxContainer/JunctionBarMargin" index="0" instance=ExtResource("1_icjoc")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(587, 34)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="GFMagicSubMenu" parent="HBoxContainer/JunctionBarMargin/JunctionSubSelect" index="5" node_paths=PackedStringArray("parent_menu")]
+parent_menu = NodePath("..")
+
+[node name="HelpMargin" type="MarginContainer" parent="HBoxContainer" index="1"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="HelpBar" parent="HBoxContainer/HelpMargin" index="0" instance=ExtResource("2_weol3")]
+custom_minimum_size = Vector2(785, 50)
+layout_mode = 2
+
+[node name="CharacterMargin" type="MarginContainer" parent="HBoxContainer" index="2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 2
+
+[node name="VitalStatsCard" parent="HBoxContainer/CharacterMargin" index="0" instance=ExtResource("4_86j0v")]
+layout_mode = 2
+script = ExtResource("5_beprm")
+
+[node name="APMargin" type="MarginContainer" parent="HBoxContainer" index="3"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 85
+
+[node name="APHeader" type="Label" parent="HBoxContainer/APMargin" index="0"]
+custom_minimum_size = Vector2(520, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("4_0eid6")
+text = "Current AP"
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" index="4"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="StatJunctionMenu" type="Control" parent="HBoxContainer/MarginContainer" index="0"]
+custom_minimum_size = Vector2(0, 176)
+layout_mode = 2
+script = ExtResource("6_ll2wd")
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/MarginContainer/StatJunctionMenu" index="0"]
+unique_name_in_owner = true
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_fbe4j")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Background" type="TextureRect" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect" index="0"]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_wpw8w")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Columns" type="HBoxContainer" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Column1" type="VBoxContainer" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label1" type="Label" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns/Column1" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_0eid6")
+text = "HP"
+
+[node name="Label2" type="Label" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns/Column1" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_0eid6")
+text = "Str"
+
+[node name="Label3" type="Label" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns/Column1" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_0eid6")
+text = "Vit"
+
+[node name="Label4" type="Label" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns/Column1" index="3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_0eid6")
+text = "Mag"
+
+[node name="Label5" type="Label" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns/Column1" index="4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_0eid6")
+text = "Spr"
+
+[node name="Column2" type="VBoxContainer" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label1" type="Label" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns/Column2" index="0"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_0eid6")
+text = "ELM/STJN"
+
+[node name="Label2" type="Label" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns/Column2" index="1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_0eid6")
+text = "Spd"
+
+[node name="Label3" type="Label" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns/Column2" index="2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_0eid6")
+text = "Eva"
+
+[node name="Label4" type="Label" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns/Column2" index="3"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_0eid6")
+text = "Hit"
+
+[node name="Label5" type="Label" parent="HBoxContainer/MarginContainer/StatJunctionMenu/NinePatchRect/MarginContainer/Columns/Column2" index="4"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_0eid6")
+text = "Luck"
+
+[node name="Header1" type="TextureRect" parent="HBoxContainer/MarginContainer/StatJunctionMenu" index="1"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 6.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_7oda3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/MarginContainer/StatJunctionMenu" index="2"]
+
+[node name="Pointer" type="TextureRect" parent="HBoxContainer/MarginContainer/StatJunctionMenu" index="3"]
+unique_name_in_owner = true
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = -31.0
+offset_top = -47.0
+offset_right = 9.0
+offset_bottom = -7.0
+texture = SubResource("AtlasTexture_eo037")
+
+[node name="GFJunctionMenu" parent="." index="2" node_paths=PackedStringArray("parent_menu") instance=ExtResource("10_s5vjp")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0104167
+anchor_top = 0.177469
+anchor_right = 0.710938
+anchor_bottom = 0.549382
+grow_horizontal = 2
+grow_vertical = 2
+parent_menu = NodePath("../HBoxContainer/JunctionBarMargin/JunctionSubSelect/GFMagicSubMenu")
+debug = false
+metadata/_edit_use_anchors_ = true
+
+[connection signal="propogate_view" from="." to="HBoxContainer/CharacterMargin/VitalStatsCard" method="update_view"]
+[connection signal="menu_cancel" from="HBoxContainer/JunctionBarMargin/JunctionSubSelect" to="." method="close_context"]
+[connection signal="on_select" from="HBoxContainer/JunctionBarMargin/JunctionSubSelect/GFMagicSubMenu/NinePatchRect/HBoxContainer/Option1" to="GFJunctionMenu" method="open"]
+
+[editable path="HBoxContainer/JunctionBarMargin/JunctionSubSelect"]

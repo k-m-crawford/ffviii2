@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl7wekt7hvubl"]
+
+[ext_resource type="PackedScene" uid="uid://dirc82dij61c3" path="res://UI/Menu/MenuBase.tscn" id="1_fuuh2"]
+[ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="2_5cjxx"]
+[ext_resource type="Script" path="res://UI/Menu/MenuHelpBar.gd" id="2_wktxr"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="3_hasfl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fpdl"]
+atlas = ExtResource("2_5cjxx")
+region = Rect2(309, 9, 24, 6)
+
+[node name="HelpBar" instance=ExtResource("1_fuuh2")]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 500.0
+offset_bottom = 50.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_wktxr")
+
+[node name="NinePatchRect" parent="." index="0"]
+clip_contents = true
+
+[node name="HelpText" type="Label" parent="NinePatchRect" index="1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -9.0
+offset_right = 182.0
+offset_bottom = 15.0
+grow_vertical = 2
+theme = ExtResource("3_hasfl")
+text = "Default text"
+
+[node name="Header1" parent="." index="1"]
+visible = true
+texture = SubResource("AtlasTexture_2fpdl")

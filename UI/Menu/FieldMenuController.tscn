@@ -1,0 +1,131 @@
+[gd_scene load_steps=9 format=3 uid="uid://dagta8tsx21su"]
+
+[ext_resource type="Script" path="res://UI/Menu/FieldMenuController.gd" id="1_78u6b"]
+[ext_resource type="Script" path="res://UI/Menu/MenuContextController.gd" id="2_kkejb"]
+[ext_resource type="PackedScene" uid="uid://bl7wekt7hvubl" path="res://UI/Menu/HelpBar.tscn" id="3_om253"]
+[ext_resource type="PackedScene" uid="uid://b4vrnffinnqoa" path="res://UI/Menu/FieldMenuPartyStatus.tscn" id="4_mdt6g"]
+[ext_resource type="PackedScene" uid="uid://b22rqug7hddqo" path="res://UI/Menu/FieldMenuMainMenu.tscn" id="5_3nrmw"]
+
+[sub_resource type="Animation" id="Animation_apo56"]
+resource_name = "Close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_12ped"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q634e"]
+_data = {
+"Close": SubResource("Animation_apo56"),
+"Open": SubResource("Animation_12ped")
+}
+
+[node name="FieldMenu" type="CanvasLayer"]
+script = ExtResource("1_78u6b")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 40
+
+[node name="ContextSeparator" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ContextContainer" type="MarginContainer" parent="MarginContainer/ContextSeparator"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(587, 0)
+layout_mode = 2
+
+[node name="DefaultContext" type="Control" parent="MarginContainer/ContextSeparator/ContextContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(587, 0)
+layout_mode = 2
+script = ExtResource("2_kkejb")
+is_open = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ContextSeparator/ContextContainer/DefaultContext"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 204.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HelpBar" parent="MarginContainer/ContextSeparator/ContextContainer/DefaultContext/VBoxContainer" instance=ExtResource("3_om253")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="Control" type="MarginContainer" parent="MarginContainer/ContextSeparator/ContextContainer/DefaultContext/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="FieldMenuPartyStatus" parent="MarginContainer/ContextSeparator/ContextContainer/DefaultContext/VBoxContainer/Control" instance=ExtResource("4_mdt6g")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../../../../../MainMenuContainer/MainMenu")
+in_focus = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/ContextSeparator/ContextContainer/DefaultContext"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_q634e")
+}
+
+[node name="MainMenuContainer" type="MarginContainer" parent="MarginContainer/ContextSeparator"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MainMenu" parent="MarginContainer/ContextSeparator/MainMenuContainer" instance=ExtResource("5_3nrmw")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../../ContextContainer/DefaultContext/VBoxContainer/Control/FieldMenuPartyStatus")
+left_boundary = 2
+debug = false
+
+[node name="Control" type="Control" parent="MarginContainer/ContextSeparator"]
+layout_mode = 2
+
+[connection signal="menu_selection" from="MarginContainer/ContextSeparator/MainMenuContainer/MainMenu" to="." method="_on_main_menu_menu_selection"]
+[connection signal="selection_change" from="MarginContainer/ContextSeparator/MainMenuContainer/MainMenu" to="MarginContainer/ContextSeparator/ContextContainer/DefaultContext/VBoxContainer/HelpBar" method="update_text"]

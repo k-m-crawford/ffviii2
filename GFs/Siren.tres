@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GF" load_steps=2 format=3 uid="uid://d66roxcc28qw"]
+
+[ext_resource type="Script" path="res://GFStruct.gd" id="1_pb0hl"]
+
+[resource]
+script = ExtResource("1_pb0hl")
+name = "Siren"
+junctioned = false

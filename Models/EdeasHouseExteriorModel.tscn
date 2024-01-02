@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dls7ms7wxnk6b"]
+
+[ext_resource type="PackedScene" uid="uid://x4wand06q6wh" path="res://Models/EdeasOrphanageExterior.glb" id="1_1qgkd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_werqa"]
+points = PackedVector3Array(0.6875, 1, 1.5, 0.6875, 1, 0.5, -0.6875, 1, 1.5, 0.6875, 0, -0.25, -0.687, 1, 0.5, 0.687, 0, -0.25, 0.681, 0, -0.5, -0.6875, 0, -0.25, 0.681443, 0, -0.5, -0.682, 0, -0.5, -0.687, 0, -0.25, -0.681578, 0, -0.5)
+
+[node name="EdeasHouseExt" instance=ExtResource("1_1qgkd")]
+
+[node name="CollisionShape3D" parent="Node/platform_stairs/stairs/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_werqa")

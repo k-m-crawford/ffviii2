@@ -1,4 +1,4 @@
-class_name DefaultBalloon
+class_name DialogueDefaultBalloon
 extends CanvasLayer
 
 @onready var balloon: Control = %Balloon
@@ -98,7 +98,7 @@ var dialogue_line: DialogueLine:
 				
 		dialogue_label.size = best_size
 		next_position.y += dialogue_label.size.y + 15
-		balloon_size += best_size + Vector2(0, 25)
+		balloon_size += best_size + Vector2(30.0, 25.0)
 		
 		responses_menu.hide()
 		var longest_response_width:float = responses_menu.set_responses(dialogue_line.responses, best_size)

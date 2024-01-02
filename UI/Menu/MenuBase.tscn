@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://dirc82dij61c3"]
+
+[ext_resource type="Texture2D" uid="uid://dm2glf1awue65" path="res://addons/dialogue_manager/default_balloon/menu_border.png" id="1_jsbwf"]
+[ext_resource type="Script" path="res://UI/Menu/MenuBase.gd" id="1_uica8"]
+[ext_resource type="Gradient" path="res://addons/dialogue_manager/default_balloon/box_gradients.tres" id="2_dmgci"]
+[ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="4_gc4df"]
+[ext_resource type="PackedScene" uid="uid://71fc6df20643" path="res://UI/Menu/MenuPointer.tscn" id="5_kx46r"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x0pss"]
+gradient = ExtResource("2_dmgci")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deghv"]
+atlas = ExtResource("4_gc4df")
+region = Rect2(277, 9, 32, 6)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchor_right = 0.214
+anchor_bottom = 0.700198
+offset_right = -0.528015
+offset_bottom = 0.271973
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uica8")
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jsbwf")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Background" type="TextureRect" parent="NinePatchRect"]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_x0pss")
+
+[node name="Header1" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 6.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_deghv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Pointer" parent="." instance=ExtResource("5_kx46r")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 48.0
+offset_bottom = 30.0

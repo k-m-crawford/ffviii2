@@ -1,0 +1,155 @@
+[gd_scene load_steps=6 format=3 uid="uid://b22rqug7hddqo"]
+
+[ext_resource type="PackedScene" uid="uid://dirc82dij61c3" path="res://UI/Menu/MenuBase.tscn" id="1_3g1wg"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="2_4yjol"]
+
+[sub_resource type="Animation" id="Animation_08b60"]
+resource_name = "Close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(244, 247), Vector2(244, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect/SelectionHeaderOffset/ColEntry:theme_override_constants/separation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.2001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [5, 25, 25]
+}
+
+[sub_resource type="Animation" id="Animation_t0kd6"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(244, 50), Vector2(244, 247)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect/SelectionHeaderOffset/ColEntry:theme_override_constants/separation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [25, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_88k3a"]
+_data = {
+"Close": SubResource("Animation_08b60"),
+"Open": SubResource("Animation_t0kd6")
+}
+
+[node name="FieldMainMenu" instance=ExtResource("1_3g1wg")]
+custom_minimum_size = Vector2(244, 247)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 244.0
+offset_bottom = 247.0
+grow_horizontal = 1
+grow_vertical = 1
+column_entry = Array[NodePath]([NodePath("NinePatchRect/SelectionHeaderOffset/ColEntry")])
+close_on_cancel = false
+debug = true
+
+[node name="NinePatchRect" parent="." index="0"]
+clip_contents = true
+
+[node name="SelectionHeaderOffset" type="MarginContainer" parent="NinePatchRect" index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.098
+anchor_top = 0.0100049
+anchor_right = 0.902
+anchor_bottom = 0.99299
+offset_left = -0.108002
+offset_top = -0.0620022
+offset_right = 0.107986
+offset_bottom = -0.154022
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColEntry" type="VBoxContainer" parent="NinePatchRect/SelectionHeaderOffset" index="0"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Option1" type="Label" parent="NinePatchRect/SelectionHeaderOffset/ColEntry" index="0"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("2_4yjol")
+text = "Junction"
+vertical_alignment = 1
+
+[node name="Option2" type="Label" parent="NinePatchRect/SelectionHeaderOffset/ColEntry" index="1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("2_4yjol")
+text = "Item"
+vertical_alignment = 1
+
+[node name="Option3" type="Label" parent="NinePatchRect/SelectionHeaderOffset/ColEntry" index="2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("2_4yjol")
+text = "Magic"
+vertical_alignment = 1
+
+[node name="Option4" type="Label" parent="NinePatchRect/SelectionHeaderOffset/ColEntry" index="3"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("2_4yjol")
+text = "Status"
+vertical_alignment = 1
+
+[node name="Option5" type="Label" parent="NinePatchRect/SelectionHeaderOffset/ColEntry" index="4"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("2_4yjol")
+text = "GF	"
+vertical_alignment = 1
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_88k3a")
+}
+
+[node name="Pointer" parent="." index="3"]
+offset_left = -23.0
+offset_top = 10.0
+offset_right = 25.0
+offset_bottom = 40.0

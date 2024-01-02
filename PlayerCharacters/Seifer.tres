@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=5 format=3 uid="uid://bghuqy1gx3bao"]
+
+[ext_resource type="Resource" uid="uid://dr4lmfngxpsay" path="res://GFs/Ifrit.tres" id="1_hprd0"]
+[ext_resource type="Texture2D" uid="uid://c1p5bnvx5r526" path="res://UI/Menu/portraits_high_res.png" id="3_pago1"]
+[ext_resource type="Script" path="res://PlayerCharacter.gd" id="4_lpteq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3daqp"]
+atlas = ExtResource("3_pago1")
+region = Rect2(128, 96, 64, 96)
+
+[resource]
+script = ExtResource("4_lpteq")
+name = "Seifer"
+portrait = SubResource("AtlasTexture_3daqp")
+max_hp = 232
+hp = 232
+stn = 1
+vit = 1
+mag = 1
+spr = 1
+spd = 1
+eva = 1
+hit = 1
+luck = 1
+junctioned_gfs = Array[Resource]([ExtResource("1_hprd0")])
+max_gfs = 4

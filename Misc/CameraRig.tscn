@@ -8,5 +8,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5436, 3.24228, 0)
 script = ExtResource("1_vwrx7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.985987, 0.16682, 0, -0.16682, 0.985987, 0, 1.5, 6)
+transform = Transform3D(1, 0, 0, 0, 0.984807, 0.173648, 0, -0.173648, 0.984807, 0, 1.5, 7)
 attributes = ExtResource("2_eow6y")
+fov = 70.0

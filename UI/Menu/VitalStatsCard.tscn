@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dskebg2dhp5dn"]
+
+[ext_resource type="Texture2D" uid="uid://c1p5bnvx5r526" path="res://UI/Menu/portraits_high_res.png" id="1_a1hv2"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="2_5h7me"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr3op"]
+atlas = ExtResource("1_a1hv2")
+region = Rect2(129, 96, 63, 96)
+
+[node name="VitalStatsCard" type="HBoxContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Portrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_lr3op")
+
+[node name="VitalHeaders" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("2_5h7me")
+text = "Squall
+LV
+HP"
+vertical_alignment = 3

@@ -1,0 +1,182 @@
+[gd_scene load_steps=13 format=3 uid="uid://dc15mp4npehms"]
+
+[ext_resource type="PackedScene" uid="uid://dirc82dij61c3" path="res://UI/Menu/MenuBase.tscn" id="1_cy41x"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="2_yj70v"]
+[ext_resource type="Texture2D" uid="uid://dm2glf1awue65" path="res://addons/dialogue_manager/default_balloon/menu_border.png" id="3_w6vq8"]
+[ext_resource type="Script" path="res://UI/Menu/MenuBase.gd" id="3_xaeoy"]
+[ext_resource type="Gradient" path="res://addons/dialogue_manager/default_balloon/box_gradients.tres" id="4_avb5f"]
+[ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="5_pc8wq"]
+[ext_resource type="Script" path="res://MenuItem.gd" id="7_rn017"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x0pss"]
+gradient = ExtResource("4_avb5f")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17wte"]
+atlas = ExtResource("5_pc8wq")
+region = Rect2(366, 1, 24, 15)
+
+[sub_resource type="Animation" id="Animation_u2k80"]
+resource_name = "Close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(424, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hpkyu"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(424, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0tc2l"]
+_data = {
+"Close": SubResource("Animation_u2k80"),
+"Open": SubResource("Animation_hpkyu")
+}
+
+[node name="Menu" instance=ExtResource("1_cy41x")]
+clip_contents = true
+custom_minimum_size = Vector2(500, 34)
+anchor_right = 0.521701
+anchor_bottom = 0.0520494
+offset_right = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+column_entry = Array[NodePath]([NodePath("ColumnEntry")])
+horizontal_orientation = true
+close_on_cancel = false
+
+[node name="NinePatchRect" parent="." index="0"]
+clip_contents = true
+
+[node name="ColumnEntry" type="HBoxContainer" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Option1" type="Label" parent="ColumnEntry" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_yj70v")
+text = "Junction"
+script = ExtResource("7_rn017")
+
+[node name="Option2" type="Label" parent="ColumnEntry" index="1"]
+layout_mode = 2
+theme = ExtResource("2_yj70v")
+text = "Off"
+
+[node name="Option3" type="Label" parent="ColumnEntry" index="2"]
+layout_mode = 2
+theme = ExtResource("2_yj70v")
+text = "Auto"
+
+[node name="Option4" type="Label" parent="ColumnEntry" index="3"]
+layout_mode = 2
+theme = ExtResource("2_yj70v")
+text = "Ability"
+
+[node name="GFMagicSubMenu" type="Control" parent="." index="5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 424.0
+offset_right = 424.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_xaeoy")
+column_entry = Array[NodePath]([NodePath("NinePatchRect/HBoxContainer")])
+horizontal_orientation = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GFMagicSubMenu" index="0"]
+z_as_relative = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.354
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_w6vq8")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GFMagicSubMenu/NinePatchRect" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Option1" type="Label" parent="GFMagicSubMenu/NinePatchRect/HBoxContainer" index="0"]
+layout_mode = 2
+tooltip_text = "Junctioning"
+mouse_filter = 0
+theme = ExtResource("2_yj70v")
+text = "GF"
+script = ExtResource("7_rn017")
+metadata/_edit_use_anchors_ = true
+
+[node name="Option2" type="Label" parent="GFMagicSubMenu/NinePatchRect/HBoxContainer" index="1"]
+layout_mode = 2
+theme = ExtResource("2_yj70v")
+text = "Magic"
+
+[node name="Background" type="TextureRect" parent="GFMagicSubMenu/NinePatchRect" index="1"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_x0pss")
+
+[node name="Pointer" type="TextureRect" parent="GFMagicSubMenu" index="1"]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = -31.0
+offset_top = -47.0
+offset_right = 9.0
+offset_bottom = -7.0
+texture = SubResource("AtlasTexture_17wte")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GFMagicSubMenu" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_0tc2l")
+}
+
+[connection signal="on_select" from="ColumnEntry/Option1" to="GFMagicSubMenu" method="open"]

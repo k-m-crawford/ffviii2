@@ -1,0 +1,341 @@
+[gd_scene load_steps=11 format=3 uid="uid://bytrroudi5133"]
+
+[ext_resource type="PackedScene" uid="uid://cmioj5imrvisq" path="res://UI/Menu/MenuBackground.tscn" id="1_m13f7"]
+[ext_resource type="Script" path="res://UI/Menu/GFJunctionMenu.gd" id="1_ng8h6"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="2_04sr2"]
+[ext_resource type="Resource" uid="uid://bq21s7qphsxh4" path="res://PlayerCharacters/Squall.tres" id="2_h8u3p"]
+[ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="4_kjrdd"]
+[ext_resource type="PackedScene" uid="uid://71fc6df20643" path="res://UI/Menu/MenuPointer.tscn" id="4_wewpk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8g3b"]
+atlas = ExtResource("4_kjrdd")
+region = Rect2(189, 48, 6, 10)
+
+[sub_resource type="Animation" id="Animation_d4677"]
+resource_name = "Close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer:theme_override_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5, 1400]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:theme_override_constants/margin_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, -601]
+}
+
+[sub_resource type="Animation" id="Animation_tn7lc"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer:theme_override_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1400, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:theme_override_constants/margin_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-601, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyfj8"]
+_data = {
+"Close": SubResource("Animation_d4677"),
+"Open": SubResource("Animation_tn7lc")
+}
+
+[node name="GFJunctionMenu" type="Control" node_paths=PackedStringArray("navigation")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ng8h6")
+column_entry = Array[NodePath]([NodePath("MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer/NameContainer")])
+horizontal_orientation = null
+selection_position_override = null
+navigation = NodePath("MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/Navigation")
+items_per_page = 4
+up_boundary = null
+down_boundary = null
+left_boundary = null
+right_boundary = null
+cursor_memory = null
+close_on_cancel = null
+in_focus = null
+debug = true
+default_view = ExtResource("2_h8u3p")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = -601
+theme_override_constants/margin_right = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1400
+alignment = 1
+
+[node name="EquippedPane" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_m13f7")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/EquippedPane"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -110.0
+offset_right = 319.0
+offset_bottom = 110.0
+grow_vertical = 2
+theme_override_constants/margin_left = 26
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 41
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Quetzacotl"
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Shiva"
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Ifrit"
+
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Siren"
+
+[node name="Label5" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Brothers"
+
+[node name="Label6" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Leviathan"
+
+[node name="Label7" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Diabolos"
+
+[node name="Label8" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Pandemona"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Carbuncle"
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Cerberus"
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Alexander"
+
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Doomtrain"
+
+[node name="Label5" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Bahamut"
+
+[node name="Label6" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Cactuar"
+
+[node name="Label7" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Tonberry"
+
+[node name="Label8" type="Label" parent="MarginContainer/HBoxContainer/EquippedPane/MarginContainer2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_04sr2")
+text = "Eden"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EquipMenu" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_m13f7")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NameContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_04sr2")
+text = "Fire"
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_04sr2")
+text = "Blizzard"
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_04sr2")
+text = "Demi"
+
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_04sr2")
+text = "Cura"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_04sr2")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_04sr2")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_04sr2")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_04sr2")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = SubResource("AtlasTexture_m8g3b")
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/EquipMenu/VBoxContainer/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("AtlasTexture_m8g3b")
+
+[node name="InfoPane" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_m13f7")]
+clip_contents = true
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+
+[node name="Pointer" parent="." instance=ExtResource("4_wewpk")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 48.0
+offset_bottom = 30.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lyfj8")
+}

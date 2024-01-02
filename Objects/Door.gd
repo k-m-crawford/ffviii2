@@ -2,9 +2,9 @@ class_name Door extends Discoverable
 
 @onready var anim:AnimationPlayer = $AnimationPlayer
 
-var is_open = false
+var is_open:bool = false
 
-func on_trigger():
+func on_trigger() -> void:
 	
 	if not is_open:
 		anim.play("Open")

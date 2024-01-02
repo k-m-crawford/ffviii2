@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GF" load_steps=2 format=3 uid="uid://dbfxiv8vw4hg3"]
+
+[ext_resource type="Script" path="res://GFStruct.gd" id="1_mxe2c"]
+
+[resource]
+script = ExtResource("1_mxe2c")
+name = "Quetzacotl"
+junctioned = true

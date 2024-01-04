@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://5bb80xyjslk8"]
+[gd_scene load_steps=9 format=3 uid="uid://5bb80xyjslk8"]
 
 [ext_resource type="PackedScene" uid="uid://0kpo0iiiu2kv" path="res://UI/Menu/MenuContextBase.tscn" id="1_4a77d"]
 [ext_resource type="PackedScene" uid="uid://dc15mp4npehms" path="res://UI/Menu/JunctionMenuSubSelect.tscn" id="1_icjoc"]
 [ext_resource type="PackedScene" uid="uid://bl7wekt7hvubl" path="res://UI/Menu/HelpBar.tscn" id="2_weol3"]
-[ext_resource type="Script" path="res://MenuItem.gd" id="3_00ydv"]
 [ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="4_0eid6"]
 [ext_resource type="PackedScene" uid="uid://dskebg2dhp5dn" path="res://UI/Menu/VitalStatsCard.tscn" id="4_86j0v"]
 [ext_resource type="Script" path="res://UI/Menu/VitalStatsCard.gd" id="5_beprm"]
@@ -37,13 +36,30 @@ custom_minimum_size = Vector2(587, 34)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+selection_position_override = null
+selection_pruning = null
+items_per_page = null
+up_boundary = null
+down_boundary = null
+left_boundary = null
+right_boundary = null
+cursor_memory = null
+in_focus = null
+debug = null
 
 [node name="GFMagicSubMenu" parent="HBoxContainer/JunctionBarMargin/JunctionSubSelect" index="5" node_paths=PackedStringArray("parent_menu")]
+selection_position_override = null
+selection_pruning = null
 parent_menu = NodePath("..")
-cursor_memory = true
-
-[node name="Option2" parent="HBoxContainer/JunctionBarMargin/JunctionSubSelect/GFMagicSubMenu/NinePatchRect/HBoxContainer" index="1"]
-script = ExtResource("3_00ydv")
+items_per_page = null
+up_boundary = null
+down_boundary = null
+left_boundary = null
+right_boundary = null
+cursor_memory = null
+close_on_cancel = null
+in_focus = null
+debug = null
 
 [node name="HelpMargin" type="MarginContainer" parent="HBoxContainer" index="1"]
 layout_mode = 2
@@ -80,9 +96,8 @@ vertical_alignment = 2
 layout_mode = 2
 theme_override_constants/margin_left = 25
 
-[node name="StatJunctionMenu" parent="HBoxContainer/StatJunctionMenuMargin" index="0" node_paths=PackedStringArray("parent_menu") instance=ExtResource("7_gavwl")]
+[node name="StatJunctionMenu" parent="HBoxContainer/StatJunctionMenuMargin" index="0" instance=ExtResource("7_gavwl")]
 layout_mode = 2
-parent_menu = NodePath("../../JunctionBarMargin/JunctionSubSelect/GFMagicSubMenu")
 
 [node name="GFJunctionMenu" parent="." index="2" node_paths=PackedStringArray("parent_menu") instance=ExtResource("10_s5vjp")]
 layout_mode = 1
@@ -98,9 +113,7 @@ debug = false
 metadata/_edit_use_anchors_ = true
 
 [connection signal="propogate_view" from="." to="HBoxContainer/CharacterMargin/VitalStatsCard" method="update_view"]
-[connection signal="propogate_view" from="." to="HBoxContainer/StatJunctionMenuMargin/StatJunctionMenu" method="on_view_update"]
 [connection signal="menu_cancel" from="HBoxContainer/JunctionBarMargin/JunctionSubSelect" to="." method="close_context"]
 [connection signal="on_select" from="HBoxContainer/JunctionBarMargin/JunctionSubSelect/GFMagicSubMenu/NinePatchRect/HBoxContainer/Option1" to="GFJunctionMenu" method="open"]
-[connection signal="on_select" from="HBoxContainer/JunctionBarMargin/JunctionSubSelect/GFMagicSubMenu/NinePatchRect/HBoxContainer/Option2" to="HBoxContainer/StatJunctionMenuMargin/StatJunctionMenu" method="open"]
 
 [editable path="HBoxContainer/JunctionBarMargin/JunctionSubSelect"]

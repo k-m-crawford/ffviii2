@@ -13,7 +13,6 @@ script = ExtResource("4_lpteq")
 name = "Seifer"
 portrait = SubResource("AtlasTexture_3daqp")
 max_hp = 232
-hp = 232
 stn = 1
 vit = 1
 mag = 1

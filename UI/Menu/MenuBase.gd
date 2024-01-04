@@ -22,14 +22,19 @@ enum MenuBoundaryDir {
 }
 
 @export_category("Setup")
-@export var column_entry:Array[NodePath]
+@export var column_entry:Array[Control]
 @export var horizontal_orientation:bool = false
 @export var selection_position_override:Dictionary
+@export var selection_pruning:Dictionary
 @export var parent_menu:MenuBase
 
 @export_category("Pagination")
 @export var navigation:CanvasItem
 @export var items_per_page:int
+# NOTE: These should be THE SAME SIZE as COLUMN ENTRY and each control should have the same 
+# number of children as each COLUMN ENTRY
+@export var prev_column_entry:Array[Control]
+@export var next_column_entry:Array[Control]
 
 @export_category("Boundary Behaviors")
 @export var up_boundary:MenuBoundaryBehavior = MenuBoundaryBehavior.NOTHING
@@ -51,35 +56,37 @@ enum MenuBoundaryDir {
 @onready var pointer:TextureRect = $Pointer
 
 var option_labels:Dictionary
+var prev_labels:Dictionary
+var next_labels:Dictionary
 var sel:Vector2 = Vector2.ZERO
-var cur_page:int = 0:
-	set(val):
-		if val < 0: cur_page = max_pages
-		elif val > max_pages: cur_page = 0
-		else: cur_page = val
-		populate_labels({})
-		sel = Vector2.ZERO
-		set_pointer_pos()
+var cur_page:int = 0: set = set_page
 var max_pages:int = 0
 
 func _ready() -> void:
 	
 	# set up based on COLUMN ENTRY nodes
 	var x:int = 0
-	for path:NodePath in column_entry:
-		var n:Node = get_node(path)
+	for n:Control in column_entry:
 		var y:int = 0
 		
 		for child:Node in n.get_children():
 			var coord:Vector2 = Vector2(x, y)
 			if horizontal_orientation: coord = Vector2(y, x)
 			option_labels[coord] = child
+			
+			if prev_column_entry:
+				prev_labels[coord] = prev_column_entry[coord.x as int].get_child(coord.y as int)
+			if next_column_entry:
+				next_labels[coord] = next_column_entry[coord.x as int].get_child(coord.y as int)
+			
 			y += 1
+		
 		x += 1
 	
 	# set up based on SELECTION POSITION OVERRIDES
 	for k:Vector2 in selection_position_override.keys():
 		option_labels[k] = get_node(selection_position_override.get(k) as NodePath)
+		# TO DO EXTEND menus to allow overrides for PAGINATION
 	
 	if not cursor_memory: cur_page = 0
 	
@@ -96,27 +103,35 @@ func _input(event:InputEvent) -> void:
 	if event.is_action_pressed("ui_up"):
 		if sel.y > 0:
 			sel = sel - Vector2(0.0, 1.0)
+			if sel in selection_pruning:
+				sel = selection_pruning.get(sel)
 			emit_signal("selection_change", option_labels[sel].tooltip_text)
 		else:
-			pass # BOUNDARY FUNC
+			boundary_func(MenuBoundaryDir.UP)
 		
 	elif event.is_action_pressed("ui_down"):
-		if sel + Vector2(0.0, 1.0) in option_labels and option_labels[sel + Vector2(0, 1)].text != "":
+		if sel + Vector2(0.0, 1.0) in option_labels and blank_option_check(Vector2(0, 1)):
 			sel = sel + Vector2(0.0, 1.0)
+			if sel in selection_pruning:
+				sel = selection_pruning.get(sel)
 			emit_signal("selection_change", option_labels[sel].tooltip_text)
 		else:
-			pass # BOUNDARY FUNC
+			boundary_func(MenuBoundaryDir.DOWN)
 	
 	elif event.is_action_pressed("ui_left"):
 		if sel.x > 0:
 			sel = sel - Vector2(1.0, 0.0)
+			if sel in selection_pruning:
+				sel = selection_pruning.get(sel)
 			emit_signal("selection_change", option_labels[sel].tooltip_text)
 		else:
 			boundary_func(MenuBoundaryDir.LEFT)
 	
 	elif event.is_action_pressed("ui_right"):
-		if sel + Vector2(1.0, 0.0) in option_labels and option_labels[sel + Vector2(1, 0)].text != "":
+		if sel + Vector2(1.0, 0.0) in option_labels and blank_option_check(Vector2(1, 0)):
 			sel = sel + Vector2(1.0, 0.0)
+			if sel in selection_pruning:
+				sel = selection_pruning.get(sel)
 			emit_signal("selection_change", option_labels[sel].tooltip_text)
 		else:
 			boundary_func(MenuBoundaryDir.RIGHT)
@@ -125,7 +140,7 @@ func _input(event:InputEvent) -> void:
 		# emit signals for outside contexts
 		emit_signal("menu_selection", sel)
 		# emit individual item signal
-		if option_labels.get(sel) as MenuItem:
+		if option_labels.get(sel) and "on_select" in option_labels.get(sel):
 			(option_labels.get(sel) as MenuItem).emit_signal("on_select")
 	
 	elif event.is_action_pressed("ui_cancel"):
@@ -158,6 +173,7 @@ func open(view:PlayerCharacter=null) -> void:
 	await get_tree().process_frame
 	
 	config_focus()
+	pointer.visible = true
 
 
 func close(hide_on_close:bool = false) -> void:
@@ -224,3 +240,31 @@ func populate_labels(data:Dictionary) -> void:
 	for k:Vector2 in data:
 		if option_labels.get(k):
 			option_labels[k].text = data.get(k)
+
+
+func prepopulate_page(data:Dictionary, dir:int) -> void:
+	for k:Vector2 in data:
+		if dir == -1 and prev_labels.get(k):
+			prev_labels[k].text = data.get(k)
+		elif dir == 1 and next_labels.get(k):
+			next_labels[k].text = data.get(k)
+
+
+func set_page(val:int) -> void:
+	if val < 0: cur_page = max_pages
+	elif val > max_pages: cur_page = 0
+	else: cur_page = val
+	populate_labels({})
+	sel = Vector2.ZERO
+	set_pointer_pos()
+
+
+func blank_option_check(check_vec:Vector2) -> bool:
+	if "text" not in option_labels[sel + check_vec]: return true
+	elif option_labels[sel + check_vec].text != "": return true
+	return false
+
+
+func on_view_update(view:PlayerCharacter) -> void:
+	current_view = view
+	populate_labels({})

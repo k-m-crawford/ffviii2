@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bytrroudi5133"]
+[gd_scene load_steps=12 format=3 uid="uid://bytrroudi5133"]
 
 [ext_resource type="PackedScene" uid="uid://cmioj5imrvisq" path="res://UI/Menu/MenuBackground.tscn" id="1_m13f7"]
 [ext_resource type="Script" path="res://UI/Menu/GFJunctionMenu.gd" id="1_ng8h6"]
@@ -73,7 +73,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover:position")
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -83,39 +83,22 @@ tracks/0/keys = {
 "values": [Vector2(-404, 0), Vector2(-808, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_uc1vu"]
-resource_name = "PagePrev"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-404, 0), Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lyfj8"]
 _data = {
 "Close": SubResource("Animation_d4677"),
 "Open": SubResource("Animation_tn7lc"),
-"PageNext": SubResource("Animation_n5ula"),
-"PagePrev": SubResource("Animation_uc1vu")
+"PageNext": SubResource("Animation_n5ula")
 }
 
 [node name="GFJunctionMenu" type="Control" node_paths=PackedStringArray("column_entry", "navigation", "prev_column_entry", "next_column_entry")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ng8h6")
-column_entry = [NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer")]
-navigation = NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/Navigation")
+column_entry = [NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer")]
+navigation = NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/Navigation")
 items_per_page = 4
-prev_column_entry = [NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer")]
-next_column_entry = [NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer")]
+prev_column_entry = [NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer")]
+next_column_entry = [NodePath("MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer")]
 left_boundary = 3
 right_boundary = 4
 debug = true
@@ -227,30 +210,30 @@ text = "Siren"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PageFlipControl" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-clip_contents = true
+[node name="PageFlipControl" type="Control" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 244)
 layout_mode = 2
 
-[node name="JunctionGFMenuContainer" type="Control" parent="MarginContainer/HBoxContainer/PageFlipControl"]
-unique_name_in_owner = true
+[node name="JunctionGFMenu" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl"]
 clip_contents = true
-custom_minimum_size = Vector2(0, 185)
 layout_mode = 2
-size_flags_vertical = 4
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -404.0
+offset_right = 404.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="JunctionGFMenuMover" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu"]
 layout_mode = 2
-offset_right = 1208.0
-offset_bottom = 185.0
 size_flags_horizontal = 8
 
-[node name="PagePrev" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover" instance=ExtResource("1_m13f7")]
+[node name="PagePrev" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer" instance=ExtResource("1_m13f7")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -259,51 +242,51 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 25
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NameContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="NameContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Fire"
 script = ExtResource("5_1x0dh")
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Blizzard"
 script = ExtResource("5_1x0dh")
 
-[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Demi"
 script = ExtResource("5_1x0dh")
 
-[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Cura"
 script = ExtResource("5_1x0dh")
 
-[node name="JunctionedCol" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="JunctionedCol" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
@@ -311,57 +294,57 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Navigation" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_constants/separation = 200
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/Navigation"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 2
 texture = SubResource("AtlasTexture_m8g3b")
 flip_h = true
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/Navigation"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PagePrev/VBoxContainer/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 10
 texture = SubResource("AtlasTexture_m8g3b")
 
-[node name="PageCur" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover" instance=ExtResource("1_m13f7")]
+[node name="PageCur" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer" instance=ExtResource("1_m13f7")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -370,51 +353,51 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 25
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NameContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="NameContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Fire"
 script = ExtResource("5_1x0dh")
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Blizzard"
 script = ExtResource("5_1x0dh")
 
-[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Demi"
 script = ExtResource("5_1x0dh")
 
-[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Cura"
 script = ExtResource("5_1x0dh")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
@@ -422,35 +405,35 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Navigation" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
@@ -458,22 +441,22 @@ size_flags_vertical = 10
 theme_override_constants/separation = 200
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/Navigation"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 2
 texture = SubResource("AtlasTexture_m8g3b")
 flip_h = true
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/Navigation"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageCur/VBoxContainer/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 10
 texture = SubResource("AtlasTexture_m8g3b")
 
-[node name="PageNext" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover" instance=ExtResource("1_m13f7")]
+[node name="PageNext" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer" instance=ExtResource("1_m13f7")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -482,51 +465,51 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 25
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NameContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="NameContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Fira"
 script = ExtResource("5_1x0dh")
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Blizzard"
 script = ExtResource("5_1x0dh")
 
-[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Demi"
 script = ExtResource("5_1x0dh")
 
-[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "Cura"
 script = ExtResource("5_1x0dh")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
@@ -534,57 +517,56 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_04sr2")
 text = "99"
 horizontal_alignment = 2
 
-[node name="Navigation" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_constants/separation = 200
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/Navigation"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 2
 texture = SubResource("AtlasTexture_m8g3b")
 flip_h = true
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/Navigation"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu/HBoxContainer/PageNext/VBoxContainer/Navigation"]
 layout_mode = 2
 size_flags_horizontal = 10
 texture = SubResource("AtlasTexture_m8g3b")
 
-[node name="InfoPane" parent="MarginContainer/HBoxContainer/PageFlipControl" instance=ExtResource("1_m13f7")]
+[node name="InfoPane" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenu" instance=ExtResource("1_m13f7")]
 clip_contents = true
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="Pointer" parent="." instance=ExtResource("4_wewpk")]
 layout_mode = 0

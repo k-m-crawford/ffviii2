@@ -6,3 +6,4 @@
 script = ExtResource("1_0j7hh")
 name = "Shiva"
 junctioned = true
+junctionable_stats = Array[int]([3, 2])

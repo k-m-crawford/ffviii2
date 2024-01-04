@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GF" load_steps=2 format=3 uid="uid://bsjtnlr0vl823"]
+
+[ext_resource type="Script" path="res://GFStruct.gd" id="1_yfbco"]
+
+[resource]
+script = ExtResource("1_yfbco")
+name = "Tonberry"
+junctioned = false
+junctionable_stats = Array[int]([1, 7, 8])

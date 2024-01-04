@@ -1,0 +1,386 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7ktcfgusknm5"]
+
+[ext_resource type="Script" path="res://UI/Menu/StatJunctionMenu.gd" id="1_l2emm"]
+[ext_resource type="Texture2D" uid="uid://dm2glf1awue65" path="res://addons/dialogue_manager/default_balloon/menu_border.png" id="2_nch7i"]
+[ext_resource type="Gradient" path="res://addons/dialogue_manager/default_balloon/box_gradients.tres" id="3_2jwl0"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="4_u5b0o"]
+[ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="5_2f4mj"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wpw8w"]
+gradient = ExtResource("3_2jwl0")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_234ie"]
+load_path = "res://.godot/imported/hud.png-dd7c0f35855475ec2fe6457e512c3f6c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2uxu"]
+atlas = SubResource("CompressedTexture2D_234ie")
+region = Rect2(339, 165, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q23r"]
+atlas = SubResource("CompressedTexture2D_234ie")
+region = Rect2(355, 165, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2qx1"]
+atlas = SubResource("CompressedTexture2D_234ie")
+region = Rect2(371, 165, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcoqf"]
+atlas = ExtResource("5_2f4mj")
+region = Rect2(371, 225, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo037"]
+atlas = ExtResource("5_2f4mj")
+region = Rect2(366, 1, 24, 15)
+
+[node name="StatJunctionMenu" type="Control" node_paths=PackedStringArray("column_entry")]
+custom_minimum_size = Vector2(785, 176)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_l2emm")
+column_entry = [NodePath("NinePatchRect/Columns/Column1"), NodePath("NinePatchRect/Columns/Column2")]
+selection_pruning = {
+Vector2(1, 0): Vector2(1, 1)
+}
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nch7i")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Background" type="TextureRect" parent="NinePatchRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_wpw8w")
+
+[node name="Columns" type="HBoxContainer" parent="NinePatchRect"]
+layout_mode = 2
+anchor_left = 0.029
+anchor_right = 0.955
+anchor_bottom = 0.977
+offset_left = 6.235
+offset_top = 3.0
+offset_right = 6.32495
+offset_bottom = 0.0479889
+theme_override_constants/separation = 29
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Column1" type="VBoxContainer" parent="NinePatchRect/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/Columns/Column1"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Stat" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "HP"
+
+[node name="EquippedMag" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "----"
+
+[node name="Value" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "9999"
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/Columns/Column1"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Stat" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "Str"
+
+[node name="EquippedMag" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer2"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "----"
+
+[node name="Value" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "255"
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="NinePatchRect/Columns/Column1"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Stat" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "Vit"
+
+[node name="EquippedMag" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer3"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "----"
+
+[node name="Value" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "255"
+horizontal_alignment = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="NinePatchRect/Columns/Column1"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Stat" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "Mag"
+
+[node name="EquippedMag" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer4"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "----"
+
+[node name="Value" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "255"
+horizontal_alignment = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="NinePatchRect/Columns/Column1"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Stat" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "Spr"
+
+[node name="EquippedMag" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer5"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "----"
+
+[node name="Value" type="Label" parent="NinePatchRect/Columns/Column1/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "255	"
+horizontal_alignment = 2
+
+[node name="Column2" type="VBoxContainer" parent="NinePatchRect/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/Columns/Column2"]
+custom_minimum_size = Vector2(128, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="StatAtkIcon" type="TextureRect" parent="NinePatchRect/Columns/Column2/HBoxContainer"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_y2uxu")
+
+[node name="StatDefIcon" type="TextureRect" parent="NinePatchRect/Columns/Column2/HBoxContainer"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_3q23r")
+
+[node name="ElemAtkIcon" type="TextureRect" parent="NinePatchRect/Columns/Column2/HBoxContainer"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_o2qx1")
+
+[node name="ElemDefIcon" type="TextureRect" parent="NinePatchRect/Columns/Column2/HBoxContainer"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_wcoqf")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/Columns/Column2"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Stat" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "Spd"
+
+[node name="EquippedMag" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer2"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "----"
+
+[node name="Value" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "255"
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="NinePatchRect/Columns/Column2"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Stat" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "Eva"
+
+[node name="EquippedMag" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer3"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "----"
+
+[node name="Value" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "255"
+horizontal_alignment = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="NinePatchRect/Columns/Column2"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Stat" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "Hit"
+
+[node name="EquippedMag" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer4"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "----"
+
+[node name="Value" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "255"
+horizontal_alignment = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="NinePatchRect/Columns/Column2"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Stat" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "Luck"
+
+[node name="EquippedMag" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer5"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "----"
+
+[node name="Value" type="Label" parent="NinePatchRect/Columns/Column2/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("4_u5b0o")
+text = "255	"
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Pointer" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = -31.0
+offset_top = -47.0
+offset_right = 9.0
+offset_bottom = -7.0
+texture = SubResource("AtlasTexture_eo037")

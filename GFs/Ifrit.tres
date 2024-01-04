@@ -6,3 +6,4 @@
 script = ExtResource("1_hbv54")
 name = "Ifrit"
 junctioned = true
+junctionable_stats = Array[int]([1, 3])

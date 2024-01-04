@@ -5,3 +5,5 @@
 [resource]
 script = ExtResource("1_gbefc")
 name = "Brothers"
+junctioned = false
+junctionable_stats = Array[int]([2, 1])

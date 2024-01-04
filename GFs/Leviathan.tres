@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GF" load_steps=2 format=3 uid="uid://caqehsq3o84vb"]
+
+[ext_resource type="Script" path="res://GFStruct.gd" id="1_754ah"]
+
+[resource]
+script = ExtResource("1_754ah")
+name = "Leviathan"
+junctioned = false
+junctionable_stats = Array[int]([1, 3, 4])

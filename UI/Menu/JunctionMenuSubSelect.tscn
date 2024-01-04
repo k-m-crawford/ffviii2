@@ -53,7 +53,7 @@ _data = {
 "Open": SubResource("Animation_hpkyu")
 }
 
-[node name="Menu" instance=ExtResource("1_cy41x")]
+[node name="Menu" node_paths=PackedStringArray("column_entry") instance=ExtResource("1_cy41x")]
 clip_contents = true
 custom_minimum_size = Vector2(500, 34)
 anchor_right = 0.521701
@@ -61,7 +61,7 @@ anchor_bottom = 0.0520494
 offset_right = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-column_entry = Array[NodePath]([NodePath("ColumnEntry")])
+column_entry = [NodePath("ColumnEntry")]
 horizontal_orientation = true
 close_on_cancel = false
 
@@ -100,7 +100,7 @@ layout_mode = 2
 theme = ExtResource("2_yj70v")
 text = "Ability"
 
-[node name="GFMagicSubMenu" type="Control" parent="." index="5"]
+[node name="GFMagicSubMenu" type="Control" parent="." index="5" node_paths=PackedStringArray("column_entry")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,7 +110,7 @@ offset_right = 424.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_xaeoy")
-column_entry = Array[NodePath]([NodePath("NinePatchRect/HBoxContainer")])
+column_entry = [NodePath("NinePatchRect/HBoxContainer")]
 horizontal_orientation = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="GFMagicSubMenu" index="0"]

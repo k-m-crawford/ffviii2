@@ -65,7 +65,7 @@ _data = {
 "Open": SubResource("Animation_t0kd6")
 }
 
-[node name="FieldMainMenu" instance=ExtResource("1_3g1wg")]
+[node name="FieldMainMenu" node_paths=PackedStringArray("column_entry") instance=ExtResource("1_3g1wg")]
 custom_minimum_size = Vector2(244, 247)
 anchors_preset = 0
 anchor_right = 0.0
@@ -74,7 +74,7 @@ offset_right = 244.0
 offset_bottom = 247.0
 grow_horizontal = 1
 grow_vertical = 1
-column_entry = Array[NodePath]([NodePath("NinePatchRect/SelectionHeaderOffset/ColEntry")])
+column_entry = [NodePath("NinePatchRect/SelectionHeaderOffset/ColEntry")]
 close_on_cancel = false
 debug = true
 

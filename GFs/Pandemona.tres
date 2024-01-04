@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GF" load_steps=2 format=3 uid="uid://bogi2x050f0xc"]
+
+[ext_resource type="Script" path="res://GFStruct.gd" id="1_0bboy"]
+
+[resource]
+script = ExtResource("1_0bboy")
+name = "Pandemona"
+junctioned = false
+junctionable_stats = Array[int]([1, 5, 6])

@@ -5,3 +5,5 @@
 [resource]
 script = ExtResource("1_l22n6")
 name = "Diabolos"
+junctioned = false
+junctionable_stats = Array[int]([2, 3])

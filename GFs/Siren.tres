@@ -6,3 +6,4 @@
 script = ExtResource("1_pb0hl")
 name = "Siren"
 junctioned = false
+junctionable_stats = Array[int]([4, 3])

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GF" load_steps=2 format=3 uid="uid://b0va0ns8puiet"]
+
+[ext_resource type="Script" path="res://GFStruct.gd" id="1_gqhei"]
+
+[resource]
+script = ExtResource("1_gqhei")
+name = "Doomtrain"
+junctioned = false
+junctionable_stats = Array[int]([])

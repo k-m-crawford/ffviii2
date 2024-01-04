@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GF" load_steps=2 format=3 uid="uid://dewmebdetcjay"]
+
+[ext_resource type="Script" path="res://GFStruct.gd" id="1_u1mwj"]
+
+[resource]
+script = ExtResource("1_u1mwj")
+name = "Alexander"
+junctioned = false
+junctionable_stats = Array[int]([2, 3])

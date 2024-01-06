@@ -1,0 +1,469 @@
+[gd_scene load_steps=12 format=3 uid="uid://c7mu6yxv6j74y"]
+
+[ext_resource type="Script" path="res://DataMenu.gd" id="1_4k4on"]
+[ext_resource type="PackedScene" uid="uid://71fc6df20643" path="res://UI/Menu/MenuPointer.tscn" id="2_oaxvq"]
+[ext_resource type="PackedScene" uid="uid://cmioj5imrvisq" path="res://UI/Menu/MenuBackground.tscn" id="3_b2iav"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="4_27b3k"]
+[ext_resource type="Script" path="res://MenuItem.gd" id="5_y1s7y"]
+[ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="6_8rtiy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df1qp"]
+atlas = ExtResource("6_8rtiy")
+region = Rect2(189, 48, 6, 10)
+
+[sub_resource type="Animation" id="Animation_c3dan"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-404, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PageFlipControl:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(404, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vpddq"]
+resource_name = "PageNext"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-404, 0), Vector2(-808, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_loe2l"]
+resource_name = "PagePrev"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-404, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q1qr1"]
+_data = {
+"Open": SubResource("Animation_c3dan"),
+"PageNext": SubResource("Animation_vpddq"),
+"PagePrev": SubResource("Animation_loe2l")
+}
+
+[node name="MagicMenu" type="Control" node_paths=PackedStringArray("column_entry", "navigation", "prev_column_entry", "next_column_entry")]
+clip_contents = true
+custom_minimum_size = Vector2(400, 244)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 244.0
+script = ExtResource("1_4k4on")
+column_entry = [NodePath("PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer")]
+navigation = NodePath("PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/Navigation")
+items_per_page = 4
+prev_column_entry = [NodePath("PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer")]
+next_column_entry = [NodePath("PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer")]
+debug = true
+
+[node name="Pointer" parent="." instance=ExtResource("2_oaxvq")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 48.0
+offset_bottom = 30.0
+
+[node name="PageFlipControl" type="VBoxContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(400, 244)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 404.0
+offset_right = 404.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JunctionGFMenuContainer" type="Control" parent="PageFlipControl"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(0, 185)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="JunctionGFMenuMover" type="HBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = -404.0
+offset_right = 804.0
+offset_bottom = 185.0
+size_flags_horizontal = 8
+
+[node name="PagePrev" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover" instance=ExtResource("3_b2iav")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NameContainer" type="VBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Fire"
+script = ExtResource("5_y1s7y")
+
+[node name="Label2" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Blizzard"
+script = ExtResource("5_y1s7y")
+
+[node name="Label3" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Demi"
+script = ExtResource("5_y1s7y")
+
+[node name="Label4" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Cura"
+script = ExtResource("5_y1s7y")
+
+[node name="JunctionedCol" type="VBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/MarginContainer/HBoxContainer/JunctionedCol"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Navigation" type="HBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = SubResource("AtlasTexture_df1qp")
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PagePrev/VBoxContainer/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("AtlasTexture_df1qp")
+
+[node name="PageCur" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover" instance=ExtResource("3_b2iav")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NameContainer" type="VBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Fire"
+script = ExtResource("5_y1s7y")
+
+[node name="Label2" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Blizzard"
+script = ExtResource("5_y1s7y")
+
+[node name="Label3" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Demi"
+script = ExtResource("5_y1s7y")
+
+[node name="Label4" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Cura"
+script = ExtResource("5_y1s7y")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Navigation" type="HBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = SubResource("AtlasTexture_df1qp")
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageCur/VBoxContainer/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("AtlasTexture_df1qp")
+
+[node name="PageNext" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover" instance=ExtResource("3_b2iav")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NameContainer" type="VBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Fira"
+script = ExtResource("5_y1s7y")
+
+[node name="Label2" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Blizzard"
+script = ExtResource("5_y1s7y")
+
+[node name="Label3" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Demi"
+script = ExtResource("5_y1s7y")
+
+[node name="Label4" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "Cura"
+script = ExtResource("5_y1s7y")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_27b3k")
+text = "99"
+horizontal_alignment = 2
+
+[node name="Navigation" type="HBoxContainer" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = SubResource("AtlasTexture_df1qp")
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="PageFlipControl/JunctionGFMenuContainer/JunctionGFMenuMover/PageNext/VBoxContainer/Navigation"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("AtlasTexture_df1qp")
+
+[node name="InfoPane" parent="PageFlipControl" instance=ExtResource("3_b2iav")]
+clip_contents = true
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q1qr1")
+}

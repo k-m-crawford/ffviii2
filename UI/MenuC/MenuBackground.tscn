@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmioj5imrvisq"]
+
+[ext_resource type="Texture2D" uid="uid://dm2glf1awue65" path="res://addons/dialogue_manager/default_balloon/menu_border.png" id="1_4ydn1"]
+[ext_resource type="Gradient" path="res://addons/dialogue_manager/default_balloon/box_gradients.tres" id="2_fx5u3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mryl7"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+texture = ExtResource("1_4ydn1")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5duvd"]
+gradient = ExtResource("2_fx5u3")
+
+[node name="Background" type="Panel"]
+z_as_relative = false
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mryl7")
+
+[node name="Texture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5duvd")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bytrroudi5133"]
 
-[ext_resource type="PackedScene" uid="uid://cmioj5imrvisq" path="res://UI/Menu/MenuBackground.tscn" id="1_m13f7"]
+[ext_resource type="PackedScene" uid="uid://cmioj5imrvisq" path="res://UI/MenuC/MenuBackground.tscn" id="1_m13f7"]
 [ext_resource type="Script" path="res://UI/Menu/GFJunctionMenu.gd" id="1_ng8h6"]
 [ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="2_04sr2"]
 [ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="4_kjrdd"]
@@ -124,12 +124,12 @@ debug = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = -601
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 1400
+theme_override_constants/separation = 5
 alignment = 1
 
 [node name="JunctionedGFs" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
@@ -242,7 +242,8 @@ size_flags_vertical = 4
 [node name="JunctionGFMenuMover" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PageFlipControl/JunctionGFMenuContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_right = 1208.0
+offset_left = -404.0
+offset_right = 804.0
 offset_bottom = 185.0
 size_flags_horizontal = 8
 
@@ -597,5 +598,3 @@ offset_bottom = 30.0
 libraries = {
 "": SubResource("AnimationLibrary_lyfj8")
 }
-
-[connection signal="menu_selection" from="." to="." method="selection_function" unbinds=1]

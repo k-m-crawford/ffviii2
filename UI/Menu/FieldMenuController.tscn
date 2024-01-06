@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dagta8tsx21su"]
+[gd_scene load_steps=10 format=3 uid="uid://dagta8tsx21su"]
 
 [ext_resource type="Script" path="res://UI/Menu/FieldMenuController.gd" id="1_78u6b"]
 [ext_resource type="Script" path="res://UI/Menu/MenuContextController.gd" id="2_kkejb"]
 [ext_resource type="PackedScene" uid="uid://bl7wekt7hvubl" path="res://UI/Menu/HelpBar.tscn" id="3_om253"]
 [ext_resource type="PackedScene" uid="uid://b4vrnffinnqoa" path="res://UI/Menu/FieldMenuPartyStatus.tscn" id="4_mdt6g"]
 [ext_resource type="PackedScene" uid="uid://b22rqug7hddqo" path="res://UI/Menu/FieldMenuMainMenu.tscn" id="5_3nrmw"]
+[ext_resource type="PackedScene" uid="uid://5bb80xyjslk8" path="res://UI/Menu/JunctionMenuContext.tscn" id="5_ag7ca"]
 
 [sub_resource type="Animation" id="Animation_apo56"]
 resource_name = "Close"
@@ -79,6 +80,7 @@ layout_mode = 2
 
 [node name="DefaultContext" type="Control" parent="MarginContainer/ContextSeparator/ContextContainer"]
 unique_name_in_owner = true
+visible = false
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(587, 0)
 layout_mode = 2
@@ -112,6 +114,9 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_q634e")
 }
+
+[node name="JunctionMenuContext" parent="MarginContainer/ContextSeparator/ContextContainer" instance=ExtResource("5_ag7ca")]
+layout_mode = 2
 
 [node name="MainMenuContainer" type="MarginContainer" parent="MarginContainer/ContextSeparator"]
 layout_mode = 2

@@ -11,18 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://bytrroudi5133" path="res://UI/Menu/GFJunctionMenu.tscn" id="10_s5vjp"]
 
 [node name="JunctionMenuContext" node_paths=PackedStringArray("default_focus") instance=ExtResource("1_4a77d")]
-modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(587, 0)
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 default_focus = NodePath("HBoxContainer/JunctionBarMargin/JunctionSubSelect")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="." index="1"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.703
-anchor_bottom = 0.81
-offset_right = 0.143982
-offset_bottom = -86.8801
+offset_right = 810.0
+offset_bottom = 525.0
 alignment = 2
 
 [node name="JunctionBarMargin" type="MarginContainer" parent="HBoxContainer" index="0"]
@@ -38,6 +34,18 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
+[node name="Option1" parent="HBoxContainer/JunctionBarMargin/JunctionSubSelect/ColumnEntry" index="0"]
+size_flags_horizontal = 3
+
+[node name="Option2" parent="HBoxContainer/JunctionBarMargin/JunctionSubSelect/ColumnEntry" index="1"]
+size_flags_horizontal = 3
+
+[node name="Option3" parent="HBoxContainer/JunctionBarMargin/JunctionSubSelect/ColumnEntry" index="2"]
+size_flags_horizontal = 3
+
+[node name="Option4" parent="HBoxContainer/JunctionBarMargin/JunctionSubSelect/ColumnEntry" index="3"]
+size_flags_horizontal = 3
+
 [node name="GFMagicSubMenu" parent="HBoxContainer/JunctionBarMargin/JunctionSubSelect" index="5" node_paths=PackedStringArray("parent_menu")]
 parent_menu = NodePath("..")
 cursor_memory = true
@@ -52,6 +60,7 @@ theme_override_constants/margin_left = 25
 [node name="HelpBar" parent="HBoxContainer/HelpMargin" index="0" instance=ExtResource("2_weol3")]
 custom_minimum_size = Vector2(785, 50)
 layout_mode = 2
+size_flags_horizontal = 1
 
 [node name="CharacterMargin" type="MarginContainer" parent="HBoxContainer" index="2"]
 layout_mode = 2
@@ -84,7 +93,7 @@ theme_override_constants/margin_left = 25
 layout_mode = 2
 parent_menu = NodePath("../../JunctionBarMargin/JunctionSubSelect/GFMagicSubMenu")
 
-[node name="GFJunctionMenu" parent="." index="2" node_paths=PackedStringArray("parent_menu") instance=ExtResource("10_s5vjp")]
+[node name="GFJunctionMenu" parent="." index="2" node_paths=PackedStringArray("column_entry", "parent_menu", "prev_column_entry", "next_column_entry") instance=ExtResource("10_s5vjp")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.0104167
@@ -93,7 +102,10 @@ anchor_right = 0.710938
 anchor_bottom = 0.549382
 grow_horizontal = 2
 grow_vertical = 2
+column_entry = []
 parent_menu = NodePath("../HBoxContainer/JunctionBarMargin/JunctionSubSelect/GFMagicSubMenu")
+prev_column_entry = []
+next_column_entry = []
 debug = false
 metadata/_edit_use_anchors_ = true
 

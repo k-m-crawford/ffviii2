@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2kmto1pj6j6b"]
+
+[ext_resource type="PackedScene" uid="uid://cnbawjcv72cfp" path="res://UI/MenuC/FieldMenuMainNavigation.tscn" id="1_jwie8"]
+[ext_resource type="PackedScene" uid="uid://c0wpw0nt2pq58" path="res://UI/MenuC/JunctionMenuContext.tscn" id="1_qqmcw"]
+
+[node name="FieldMenu" type="CanvasLayer"]
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="ContextSeparator" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+alignment = 1
+
+[node name="ContextContainer" type="Control" parent="Margin/ContextSeparator"]
+custom_minimum_size = Vector2(587, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="JunctionMenuContext" parent="Margin/ContextSeparator/ContextContainer" instance=ExtResource("1_qqmcw")]
+layout_mode = 1
+
+[node name="FieldMenuMainNavigation" parent="Margin/ContextSeparator" instance=ExtResource("1_jwie8")]
+custom_minimum_size = Vector2(244, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0

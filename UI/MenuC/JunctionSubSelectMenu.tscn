@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://crwbi3b5q2kk0"]
+
+[ext_resource type="PackedScene" uid="uid://cmioj5imrvisq" path="res://UI/MenuC/MenuBackground.tscn" id="1_8sqtt"]
+[ext_resource type="Script" path="res://UI/MenuC/MenuBase.gd" id="1_h8mok"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="2_h2ucy"]
+[ext_resource type="PackedScene" uid="uid://71fc6df20643" path="res://UI/Menu/MenuPointer.tscn" id="4_833si"]
+
+[node name="JunctionSubSelectMenu" type="Control" node_paths=PackedStringArray("column_entry")]
+custom_minimum_size = Vector2(587, 34)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h8mok")
+column_entry = [NodePath("ColumnEntry")]
+horizontal_orientation = true
+debug_open = true
+
+[node name="Background" parent="." instance=ExtResource("1_8sqtt")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 587.0
+offset_bottom = 34.0
+size_flags_vertical = 3
+
+[node name="ColumnEntry" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 587.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Label" type="Label" parent="ColumnEntry"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_h2ucy")
+text = "Junction"
+
+[node name="Label2" type="Label" parent="ColumnEntry"]
+layout_mode = 2
+theme = ExtResource("2_h2ucy")
+text = "Off"
+
+[node name="Label3" type="Label" parent="ColumnEntry"]
+layout_mode = 2
+theme = ExtResource("2_h2ucy")
+text = "Auto"
+
+[node name="Label4" type="Label" parent="ColumnEntry"]
+layout_mode = 2
+theme = ExtResource("2_h2ucy")
+text = "Ability"
+
+[node name="Pointer" parent="." instance=ExtResource("4_833si")]
+layout_mode = 0

@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvydlverci1cd"]
+
+[ext_resource type="PackedScene" uid="uid://cmioj5imrvisq" path="res://UI/MenuC/MenuBackground.tscn" id="1_fmavb"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="3_kof41"]
+[ext_resource type="Texture2D" uid="uid://k5giwwe80r8u" path="res://Sprites/hud.png" id="4_xhqrc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhhee"]
+atlas = ExtResource("4_xhqrc")
+region = Rect2(309, 9, 24, 6)
+
+[node name="HelpBar" type="Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Background" parent="." instance=ExtResource("1_fmavb")]
+layout_mode = 1
+
+[node name="HelpText" type="Label" parent="Background"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -9.0
+offset_right = 182.0
+offset_bottom = 15.0
+grow_vertical = 2
+theme = ExtResource("3_kof41")
+text = "Default text"
+
+[node name="Header1" type="TextureRect" parent="Background"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 6.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_vhhee")

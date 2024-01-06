@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0wpw0nt2pq58"]
+
+[ext_resource type="Script" path="res://UI/MenuC/MenuBase.gd" id="1_kn3pq"]
+[ext_resource type="PackedScene" uid="uid://crwbi3b5q2kk0" path="res://UI/MenuC/JunctionSubSelectMenu.tscn" id="2_0viyo"]
+[ext_resource type="PackedScene" uid="uid://cvydlverci1cd" path="res://UI/MenuC/HelpBar.tscn" id="3_2ohry"]
+[ext_resource type="PackedScene" uid="uid://b7n5wyjfny4jd" path="res://UI/MenuC/JunctionGFMagicSubSelect.tscn" id="3_5hfjr"]
+[ext_resource type="PackedScene" uid="uid://dskebg2dhp5dn" path="res://UI/Menu/VitalStatsCard.tscn" id="4_aaq5h"]
+[ext_resource type="Script" path="res://UI/Menu/VitalStatsCard.gd" id="5_qvb56"]
+
+[node name="JunctionMenuContext" type="VBoxContainer"]
+custom_minimum_size = Vector2(810, 0)
+offset_right = 810.0
+offset_bottom = 230.0
+size_flags_horizontal = 0
+
+[node name="JunctionSubMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_top = 16
+script = ExtResource("1_kn3pq")
+
+[node name="JunctionSubSelectMenu" parent="JunctionSubMargin" instance=ExtResource("2_0viyo")]
+layout_mode = 2
+
+[node name="JunctionSubSelectMenu2" parent="JunctionSubMargin" instance=ExtResource("3_5hfjr")]
+layout_mode = 2
+size_flags_horizontal = 8
+debug_open = false
+
+[node name="HelpBarMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 24
+
+[node name="HelpBar" parent="HelpBarMargin" instance=ExtResource("3_2ohry")]
+custom_minimum_size = Vector2(785, 50)
+layout_mode = 2
+
+[node name="CharacterMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 2
+
+[node name="VitalStatsCard" parent="CharacterMargin" instance=ExtResource("4_aaq5h")]
+layout_mode = 2
+script = ExtResource("5_qvb56")

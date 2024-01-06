@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnbawjcv72cfp"]
+
+[ext_resource type="Script" path="res://UI/MenuC/MenuBase.gd" id="1_5e6d2"]
+[ext_resource type="PackedScene" uid="uid://cmioj5imrvisq" path="res://UI/MenuC/MenuBackground.tscn" id="2_l32l0"]
+[ext_resource type="PackedScene" uid="uid://71fc6df20643" path="res://UI/Menu/MenuPointer.tscn" id="3_2uq6k"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="4_1eg38"]
+
+[sub_resource type="Animation" id="Animation_jd54f"]
+resource_name = "ForceFrame"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pointer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y1plp"]
+_data = {
+"ForceFrame": SubResource("Animation_jd54f")
+}
+
+[node name="FieldMenuMainNavigation" type="Control" node_paths=PackedStringArray("column_entry")]
+custom_minimum_size = Vector2(244, 233)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 244.0
+offset_bottom = 233.0
+script = ExtResource("1_5e6d2")
+column_entry = [NodePath("MenuMargins/ColumnEntry")]
+debug = true
+debug_open = true
+
+[node name="NinePatchRect" parent="." instance=ExtResource("2_l32l0")]
+layout_mode = 1
+
+[node name="Pointer" parent="." instance=ExtResource("3_2uq6k")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 48.0
+offset_bottom = 30.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y1plp")
+}
+
+[node name="MenuMargins" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ColumnEntry" type="VBoxContainer" parent="MenuMargins"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="Option1" type="Label" parent="MenuMargins/ColumnEntry"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_1eg38")
+text = "Junction"
+vertical_alignment = 1
+
+[node name="Option2" type="Label" parent="MenuMargins/ColumnEntry"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_1eg38")
+text = "Item"
+vertical_alignment = 1
+
+[node name="Option3" type="Label" parent="MenuMargins/ColumnEntry"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_1eg38")
+text = "Magic"
+vertical_alignment = 1
+
+[node name="Option4" type="Label" parent="MenuMargins/ColumnEntry"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_1eg38")
+text = "Status"
+vertical_alignment = 1
+
+[node name="Option5" type="Label" parent="MenuMargins/ColumnEntry"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("4_1eg38")
+text = "GF	"
+vertical_alignment = 1

@@ -35,6 +35,7 @@ enum MenuBoundaryDir {
 # number of children as each COLUMN ENTRY
 @export var prev_column_entry:Array[Control]
 @export var next_column_entry:Array[Control]
+@export var max_pages:int = 0
 
 @export_category("Boundary Behaviors")
 @export var up_boundary:MenuBoundaryBehavior = MenuBoundaryBehavior.NOTHING
@@ -60,7 +61,6 @@ var prev_labels:Dictionary
 var next_labels:Dictionary
 var sel:Vector2 = Vector2.ZERO
 var cur_page:int = 0: set = set_page
-var max_pages:int = 0
 
 func _ready() -> void:
 	

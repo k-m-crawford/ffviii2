@@ -1,6 +1,3 @@
-class_name GF extends Resource
-
-@export var name:String
-@export var junctioned:bool = false
+class_name GF extends Junctionable
 
 @export var junctionable_stats:Array[Bucket.Stat]

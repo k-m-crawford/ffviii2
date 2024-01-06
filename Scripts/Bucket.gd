@@ -36,6 +36,13 @@ enum Stat {
 	
 ]
 
+
+@onready var spell_inventory:Array[Array] = [ 
+	["Fire", 20],
+	["Demi", 10]
+]
+
+
 @onready var party:Array[Resource] = [
 	preload("res://PlayerCharacters/Squall.tres"),
 	preload("res://PlayerCharacters/Seifer.tres")

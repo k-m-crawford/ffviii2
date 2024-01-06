@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnbawjcv72cfp"]
+
+[ext_resource type="PackedScene" uid="uid://en5n6eophbeg" path="res://UI/MenuC/MenuBase.tscn" id="1_8ee3j"]
+[ext_resource type="Script" path="res://UI/MenuC/MenuBase.gd" id="1_a6bsy"]
+[ext_resource type="PackedScene" uid="uid://71fc6df20643" path="res://UI/Menu/MenuPointer.tscn" id="2_bvhmt"]
+[ext_resource type="Theme" uid="uid://cqv2wo4avmytt" path="res://DefaultTheme.tres" id="3_08ngq"]
+
+[node name="MenuDebug" type="Control" node_paths=PackedStringArray("column_entry")]
+custom_minimum_size = Vector2(400, 185)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a6bsy")
+column_entry = [NodePath("HBoxContainer/VBoxContainer"), NodePath("HBoxContainer/VBoxContainer2")]
+labels_per_page = null
+max_pages = null
+cursor_memory = null
+in_focus = null
+debug = true
+
+[node name="MenuBase" parent="." instance=ExtResource("1_8ee3j")]
+layout_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+top_level = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_08ngq")
+text = "Label 1"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_08ngq")
+text = "Label 1"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_08ngq")
+text = "Label 1"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_08ngq")
+text = "Label 1"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_08ngq")
+text = "Label 1"
+horizontal_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_08ngq")
+text = "Label 1"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_08ngq")
+text = "Label 1"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_08ngq")
+text = "Label 1"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_08ngq")
+text = "Label 1"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_08ngq")
+text = "Label 1"
+horizontal_alignment = 2
+
+[node name="Pointer" parent="." instance=ExtResource("2_bvhmt")]
+visible = true
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 48.0
+offset_bottom = 30.0
